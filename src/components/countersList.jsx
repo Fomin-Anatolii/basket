@@ -20,13 +20,17 @@ const CountersList = () => {
     setCounters(initialState)
   }
 
-  const handleIncrement = (value) => {
-    setCounters(counters.map((c) => c.value === value++))
+  const handleIncrement = (id) => {
+    let incrementItem = counters.find((item) => item.id === id)
+    incrementItem.value++
+
+    setCounters([...counters])
   }
 
-  const handleDecrement = (value) => {
-    let newDecrement = counters.map((c) => c.value === value--)
-    setCounters(newDecrement)
+  const handleDecrement = (id) => {
+    let decrementItem = counters.find((item) => item.id === id)
+    decrementItem.value--
+    setCounters([...counters])
   }
 
   return (
